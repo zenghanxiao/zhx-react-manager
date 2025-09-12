@@ -2,17 +2,20 @@ import { RouterProvider } from 'react-router'
 import './App.less'
 import './styles/theme.less'
 import router from './router'
-import { App as Antapp, ConfigProvider, Spin } from 'antd'
+import { App as Antapp, ConfigProvider, Spin, theme } from 'antd'
 import AntdGlobal from './utils/AntdGlobal'
 import { Suspense } from 'react'
+import { useStore } from './store'
 
 function App() {
+  const isDark = useStore(state => state.isDark)
   return (
     <ConfigProvider
       theme={{
         token: {
           colorPrimary: '#006ad4'
-        }
+        },
+        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
       }}
     >
       <Antapp>
