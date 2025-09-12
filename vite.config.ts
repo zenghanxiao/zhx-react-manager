@@ -10,4 +10,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  server: {
+    host: 'localhost',
+    port: 8080,
+    proxy: {
+      '/api': 'http://api-driver.marsview.cc'
+    }
+  },
 })
